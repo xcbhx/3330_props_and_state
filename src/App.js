@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import './App.css';
 import Counter from './Counter';
 
 function App() {
@@ -13,6 +12,7 @@ function App() {
 
   return (
     <div className="App">
+      <h1>Total Count: {counts.reduce((acc, num) => acc + num, 0)}</h1>
       {counts.map((value, index) => (
         <Counter 
           key={index} 
