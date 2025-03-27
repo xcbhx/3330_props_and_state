@@ -10,6 +10,10 @@ function App() {
     setCounts(newCounts);
   };
 
+  const resetCounter = () => {
+    setCounts(counts.map(() => 0));
+  }
+
   return (
     <div className="App">
       <h1>Total Count: {counts.reduce((acc, num) => acc + num, 0)}</h1>
@@ -22,6 +26,8 @@ function App() {
           decrement={() => updateCount(index, -1)}
           />
       ))}
+      <br />
+      <button onClick={resetCounter}>Reset</button>
     </div>
   );
 }
