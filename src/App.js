@@ -23,6 +23,10 @@ function App() {
     setCounts(counts.map(() => 0));
   }
 
+  const addCounter = () => {
+    setCounts([...counts, 0]);
+  }
+
   return (
     <div className="App">
       <h1>Total Count: {counts.reduce((acc, num) => acc + num, 0)}</h1>
@@ -37,6 +41,8 @@ function App() {
       ))}
       <br />
       <button onClick={resetCounter}>Reset</button>
+      <br />
+      <button onClick={addCounter}>➕ Add Counter</button>
     </div>
   );
 }
