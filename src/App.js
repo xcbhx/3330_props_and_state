@@ -27,17 +27,23 @@ function App() {
     setCounts([...counts, 0]);
   }
 
+  const removeCounter = (indexToRemove) => {
+    setCounts(counts.filter((_, index) => index !== indexToRemove));
+  }
+
   return (
     <div className="App">
       <h1>Total Count: {counts.reduce((acc, num) => acc + num, 0)}</h1>
       {counts.map((value, index) => (
-        <Counter 
-          key={index} 
-          label={`Counter ${index + 1}`} 
-          value={value} 
-          increment={() => updateCount(index, 1)}
-          decrement={() => updateCount(index, -1)}
+        <div key={index}>
+          <Counter 
+            label={`Counter ${index + 1}`} 
+            value={value} 
+            increment={() => updateCount(index, 1)}
+            decrement={() => updateCount(index, -1)}
           />
+          <button onClick={() => removeCounter(index)}>➖ Remove Counter</button>
+        </div>
       ))}
       <br />
       <button onClick={resetCounter}>Reset</button>
