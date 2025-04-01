@@ -6,7 +6,16 @@ function App() {
   
   const updateCount = (index, delta) => {
     const newCounts = [...counts]; //Copy array (immutability)
-    newCounts[index] += delta;
+    let newValue = newCounts[index] + delta;
+
+    // Limit the counter range to 0-10
+    if (newValue < 0) {
+      newValue = 0;
+    } else if (newValue > 10) {
+      newValue = 10;
+    }
+
+    newCounts[index] = newValue;
     setCounts(newCounts);
   };
 
